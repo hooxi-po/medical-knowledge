@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗专业人员知识库</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>医疗专业人员知识库</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="搜索姓名、机构或研究领域...">
+                <button id="search-button">搜索</button>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <section id="professionals-panel" class="layout-panel">
+                <h2>专业人员列表</h2>
+                <div id="professionals-list" class="cards-container scrollable-list">
+                    <div class="loading">加载中...</div>
+                </div>
+                </section>
+
+            <section id="visualization-panel" class="layout-panel">
+                <h2>关系网络 <span id="graph-context-title" style="font-size: 0.8em; color: #555;"></span></h2>
+                <div id="network-graph-container">
+                     <div id="network-graph">
+                         <div class="graph-placeholder">请从左侧列表选择一位专业人员查看其关系网络。</div>
+                     </div>
+                </div>
+                 <div class="graph-controls">
+                     <button id="zoom-in" title="放大"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></button>
+                     <button id="zoom-out" title="缩小"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg></button>
+                     <button id="reset-graph" title="重置视图"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg></button>
+                 </div>
+            </section>
+
+            <section id="ai-panel" class="layout-panel">
+                 <h2>AI 助手</h2>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message system">
+                            您好，我是医疗专业AI助手。请问有什么我可以帮您的？
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <textarea id="question-input" placeholder="输入您的问题..."></textarea>
+                        <button id="send-question">发送</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="professional-details" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="details-content"></div>
+                <div class="ai-analysis">
+                    <h3>AI分析</h3>
+                    <div id="analysis-content"><div class="loading">分析中...</div></div>
+                </div>
+                <div class="recommendations">
+                    <h3>推荐合作伙伴</h3>
+                    <div id="recommendations-content"><div class="loading">加载推荐中...</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

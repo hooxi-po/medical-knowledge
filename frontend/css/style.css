@@ -1,0 +1,442 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f9; /* Slightly lighter background */
+}
+
+.container {
+    max-width: 1600px; /* Wider container for multi-column layout */
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Header */
+header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.search-bar {
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px 0 0 20px; /* Rounded corners */
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.search-bar input:focus {
+    border-color: #3498db;
+}
+
+
+.search-bar button {
+    padding: 10px 25px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0; /* Rounded corners */
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+.search-bar button:hover {
+    background-color: #2980b9;
+}
+
+
+/* Main Layout (3 Columns) */
+.main-layout {
+    display: grid;
+    /* Adjust column ratios as needed: List | Visualization | AI */
+    grid-template-columns: minmax(320px, 1.2fr) minmax(400px, 2fr) minmax(300px, 1fr);
+    gap: 20px;
+    /* Calculate height based on viewport minus header/padding etc. */
+    height: calc(100vh - 130px); /* Adjust this value as needed */
+    overflow: hidden; /* Prevent layout scroll */
+}
+
+.layout-panel {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevent content spilling out */
+}
+
+.layout-panel h2 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Panel Specific Styles */
+
+/* Professionals List Panel */
+#professionals-panel {
+    /* Flex properties handled by .layout-panel */
+}
+
+.scrollable-list {
+    flex-grow: 1; /* Allow list to take available space */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 5px; /* Space for scrollbar */
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column list */
+    gap: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    box-shadow: none; /* Simpler card look */
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    position: relative; /* For potential future elements */
+}
+
+.card:hover {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+    transform: none; /* Remove hover transform */
+}
+
+.card h3 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #3498db;
+}
+
+.card p {
+    font-size: 0.85em;
+    color: #555;
+    margin-bottom: 3px;
+    line-height: 1.4;
+}
+.card p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Visualization Panel */
+#visualization-panel {
+    /* Flex properties handled by .layout-panel */
+}
+
+#network-graph-container {
+    flex-grow: 1; /* Make container fill space */
+    position: relative; /* For placeholder positioning */
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #fdfdfd; /* Slightly off-white background */
+    display: flex; /* Center placeholder */
+    align-items: center;
+    justify-content: center;
+    min-height: 200px; /* Ensure minimum height */
+}
+
+
+#network-graph {
+     width: 100%;
+     height: 100%;
+     display: flex; /* Center placeholder text */
+     align-items: center;
+     justify-content: center;
+}
+
+#network-graph svg { /* Ensure SVG scales */
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.graph-placeholder {
+    color: #888;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 20px;
+}
+
+.graph-controls {
+    display: flex;
+    justify-content: flex-end; /* Align controls to the right */
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.graph-controls button {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 8px;
+    padding: 5px 8px; /* Smaller buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.graph-controls button:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+}
+.graph-controls button svg {
+     color: #555;
+}
+
+
+/* AI Assistant Panel */
+#ai-panel {
+    /* Flex properties handled by .layout-panel */
+}
+
+.chat-container {
+    flex-grow: 1; /* Allow chat container to fill space */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Fill the panel */
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between messages */
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 85%; /* Slightly wider max width */
+    line-height: 1.4;
+    font-size: 0.9em;
+    word-wrap: break-word; /* Ensure long words break */
+}
+
+.message.system {
+    background-color: #e9f5ff;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+.message.user {
+    background-color: #e2f0d9;
+    align-self: flex-end;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+}
+.message.system.loading {
+    font-style: italic;
+    color: #777;
+}
+.message.system.error {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+
+.chat-input textarea {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 18px; /* Pill shape */
+    resize: none;
+    height: 40px; /* Fixed small height */
+    font-size: 0.9em;
+    line-height: 1.4;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.chat-input textarea:focus {
+     border-color: #3498db;
+}
+
+.chat-input button {
+    padding: 8px 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 18px; /* Pill shape */
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+.chat-input button:hover {
+    background-color: #2980b9;
+}
+
+
+/* Modal Styles (Largely unchanged, maybe slight adjustments) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Darker overlay */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh; /* Slightly less height */
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    position: absolute; /* Position relative to modal-content */
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+.close:hover,
+.close:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+.modal h2 { /* Style modal title */
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #3498db;
+}
+
+.detail-section {
+    margin-bottom: 15px;
+}
+.detail-section h3 {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.detail-section p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.ai-analysis, .recommendations {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+.ai-analysis h3, .recommendations h3 {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+.ai-analysis div, .recommendations div {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Utility Styles */
+.loading, .error, .no-results {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+.error {
+    color: #c0392b;
+}
+
+/* D3 Specific styles (Optional: Enhance links/nodes) */
+.links line {
+  /* stroke-width: determined by data if needed */
+}
+
+.nodes circle {
+  /* stroke: #fff; */
+  /* stroke-width: 1.5px; */
+}
+
+.nodes circle:hover {
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+/* Add scrollbar styling for webkit browsers */
+.scrollable-list::-webkit-scrollbar,
+.chat-messages::-webkit-scrollbar,
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollable-list::-webkit-scrollbar-track,
+.chat-messages::-webkit-scrollbar-track,
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+.scrollable-list::-webkit-scrollbar-thumb,
+.chat-messages::-webkit-scrollbar-thumb,
+.modal-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.scrollable-list::-webkit-scrollbar-thumb:hover,
+.chat-messages::-webkit-scrollbar-thumb:hover,
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}

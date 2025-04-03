@@ -53,13 +53,15 @@ def recommend_collaborators(professional_id):
 
 @app.route('/api/ai/question', methods=['POST'])
 def answer_question():
-    """回答医疗相关问题"""
+    """回答用户问题，可能结合数据库上下文""" # 更新了注释
     data = request.json
     question = data.get('question', '')
     if not question:
         return jsonify({"error": "问题不能为空"}), 400
     
-    answer = gemini_service.answer_medical_question(question)
+    # 调用新的、能处理数据库上下文的函数
+    answer = gemini_service.answer_question_with_db_context(question) 
+    
     return jsonify({"answer": answer})
 
 if __name__ == '__main__':
